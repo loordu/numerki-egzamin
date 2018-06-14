@@ -1,6 +1,6 @@
 \documentclass[10pt,twocolumn]{article}
 %\usepackage{showframe} %rysuje linie gdzie margines
-\usepackage[a4paper,includeheadfoot,margin=1.25cm, top=0.25cm,bottom=1.25cm]{geometry}
+\usepackage[a4paper,margin=1.15cm, top=1cm,bottom=1.25cm]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[polish]{babel}
 \usepackage[utf8]{inputenc}
@@ -51,7 +51,7 @@ $||fl(A(d)) - \varphi(d)|| \leq cond(d) \frac{K\cdot2^{-t}||d||}{||d||}||\varphi
 $$p_{n}(x) = \sum_{i = 0}^{n}f_{i}l_{i}(x)$$
 gdzie: $$l_i(x) = \prod_{{j = 0},\ {j \neq i}}^{n} \frac{x - x_{j}}{x_{i}-x_{j}}$$
 \subsection{Newton}
-$$p_{n}(x) = c_{0} + c_{1}(x-x_{0}) + c_{2}(x-x_{0})(x-x_{1}) + ... + c_{n}(x-x_{0})...(x-x_{n})$$
+$$c_{0} + c_{1}(x-x_{0}) + c_{2}(x-x_{0})(x-x_{1}) + ... + c_{n}(x-x_{0})...(x-x_{n-1})$$
 gdzie: $$c_{k} = f_{0,1,2,...,k}$$ oraz $$f_{i,i+1...k+i} \stackrel{def}{=} \frac{f_{i+1,...,k} + f_{i,...(i+k-1)}}{x_{i+k}-x_{i}}$$
 Hermit identycznie tylko że w tabeli węzły się powtarzają i w miejscu różnic dzielonych których nie można otrzymać wpisujemy $\frac{f^{(k)}(x_i)}{k!}$ a w wielomianie interpolacyjnym składniki postaci $(x-x_i)$ będą posiadały odpowiednią potęgę
 \section{Całkowanie numeryczne}

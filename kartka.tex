@@ -51,8 +51,8 @@ $||fl(A(d)) - \varphi(d)|| \leq cond(d) \frac{K\cdot2^{-t}||d||}{||d||}||\varphi
 $$p_{n}(x) = \sum_{i = 0}^{n}f_{i}l_{i}(x)$$
 gdzie: $$l_i(x) = \prod_{{j = 0},\ {j \neq i}}^{n} \frac{x - x_{j}}{x_{i}-x_{j}}$$
 \subsection{Newton}
-$$c_{0} + c_{1}(x-x_{0}) + c_{2}(x-x_{0})(x-x_{1}) + ... + c_{n}(x-x_{0})...(x-x_{n-1})$$
-gdzie: $$c_{k} = f_{0,1,2,...,k}$$ oraz $$f_{i,i+1...k+i} \stackrel{def}{=} \frac{f_{i+1,...,k} + f_{i,...(i+k-1)}}{x_{i+k}-x_{i}}$$
+$$c_{0} + c_{1}(x-x_{0}) + c_{2}(x-x_{0})(x-x_{1}) + \ldots + c_{n}(x-x_{0})\ldots (x-x_{n-1})$$
+gdzie: $$c_{k} = f_{0,1,2,\ldots,k}$$ oraz $$f_{i,i+1,\ldots,k+i} \stackrel{def}{=} \frac{f_{i+1,\ldots,k} + f_{i,\ldots,(i+k-1)}}{x_{i+k}-x_{i}}$$
 Hermit identycznie tylko że w tabeli węzły się powtarzają i w miejscu różnic dzielonych których nie można otrzymać wpisujemy $\frac{f^{(k)}(x_i)}{k!}$ a w wielomianie interpolacyjnym składniki postaci $(x-x_i)$ będą posiadały odpowiednią potęgę
 \section{Całkowanie numeryczne}
 Kwadratura jest rzędy r jeśli jest dokładna dla wszystkich wielomianów stopnie r-1 oraz istnieje wielomian stopnia r dla której nie jest dokładna\\
@@ -60,7 +60,7 @@ Kwadratura jest rzędy r jeśli jest dokładna dla wszystkich wielomianów stopn
 $$S(f) = \sum_{k=1}^{N} \frac{x_k-x_{k-1}}{2}{(f(x_k)+f(x_{k-1}})) =$$ $$=\frac{H}{2} \left(f(a)+f(b)+2\sum_{k=1}^{N-1}f(a+kH)\right)$$
 $$|E(f)| = \left| \sum_{k=1}^{N}\frac{H^3f''(\xi_k)}{12} \right| \leq \frac{H^2(b-a)}{12}\underset{\xi \in [a,b]}{\sup}|f''(\xi)|$$
 \subsection{Prostokąty}
-$$S(f) = \sum_{k=1}^{N}(x_k-x_{k-1})f\left(\frac{x_k+x_{k-1}}{2}\right) = H\sum_{k=0}^{n}f(\frac{x_k + x_{k-1}}{2})$$
+$$S(f) = \sum_{k=1}^{N}(x_k-x_{k-1})f\left(\frac{x_k+x_{k-1}}{2}\right) = H\sum_{k=0}^{n}f\left(\frac{x_k + x_{k-1}}{2}\right)$$
 $$|E(f)| \leq \frac{NH^3}{24}\underset{\xi \in [a,b]}{\sup}|f''(\xi)| = \frac{H^2}{24}(b-a)\underset{\xi \in [a,b]}{\sup}|f^{(4)}(\xi)|$$
 \subsection{Simpson}
 $$S(f) = \sum_{k=1}^N \frac{H}{6} \left(f(x_{k-1})+4f\left(x_{k-1}+\frac{H}{2}\right)+f(x_k)\right)$$
@@ -75,13 +75,13 @@ $$|E(f)|= \left| \sum_{k=1}^N \frac{H^5f^{(4)}(\xi_k)}{90\cdot2^5}\right| \leq \
 \hline
 $x_0$ & $f(x_0)$ & & \\
 \hline
-$x_0$ & $f'(x_0)$ &  &\\
+$x_0$ & $f\prime(x_0)$ &  &\\
 \hline
-$x_0$ & $f'(x_0)$ & $\frac{f''(x_0)}{2!}$ & \\
+$x_0$ & $f\prime (x_0)$ & $\frac{f\prime \prime(x_0)}{2!}$ & \\
 \hline
-... & & & \\
+\ldots & & & \\
 \hline
-$x_n$ & $f_n$ & ... & $f_{0,1,...,n}$\\
+$x_n$ & $f_n$ & \ldots & $f_{0,1,\ldots,n}$\\
 \hline
 \end{tabular}
 \end{center}

@@ -71,9 +71,9 @@ $$|E(f)|= \left| \sum_{k=1}^N \frac{H^5f^{(4)}(\xi_k)}{90\cdot2^5}\right| \leq \
 Tw.1 Jeśli $A$ jest macierzą dodatnio określoną, to metoda GE zastosowana do $Ax=b$ jest wykonalna\\
 Tw.2 Jeśli A jest silnie diagonalnie dominująca, to metoda GE zastosowana do układu $Ax=b$ jest wykonalna
 \subsection{GEPP}
-W $k$-tym kroku wybieramy wierszowo (analog. kolumnowo) $\underset{i \in \{k,...,n\}}{\max}|a_{ik}|$ i zamieniamy $k$-ty wiersz z wierszem z maksymalnym el. w macierzy $[A^{(k-1)}|b^{(k-1)}]$
+W $k$-tym kroku wybieramy wierszowo (analog. kolumnowo) $\underset{i \in \{k,\ldots,n\}}{\max}|a_{ik}|$ i zamieniamy $k$-ty wiersz z wierszem z maksymalnym el. w macierzy $[A^{(k-1)}|b^{(k-1)}]$
 \subsection{GECP}
-w $k$-tym kroku znajdujemy $p,q$ tż. $|a_{pq}| = \underset{i,j \in \{1,...,n\}}{\max}|a_{ij}|$ i zamieniamy $p$ wiersz z $k$ oraz $q$ kolumnę z $k$ przy zamianie kolumn następuje zamiana zmiennych w x
+w $k$-tym kroku znajdujemy $p,q$ tż. $|a_{pq}| = \underset{i,j \in \{1,\ldots,n\}}{\max}|a_{ij}|$ i zamieniamy $p$ wiersz z $k$ oraz $q$ kolumnę z $k$ przy zamianie kolumn następuje zamiana zmiennych w x
 \subsection{Rozkład LU} %nie wiem czy warto coś pisać
 \subsection{Rozkład PA=LU} 
 \subsection{Banachiewicz-Cholesky}
@@ -91,7 +91,7 @@ $$A = LL^T =
     0 & 0 & 0 & \dots  & l_{nn} 
 \end{bmatrix}
 $$
-Fakt: $\sqrt{\omega_1} = l_{11}$ ... $\sqrt{\frac{\omega_{k}}{\omega_{k-1}}} = l_{kk}$ 
+Fakt: $\sqrt{\omega_1} = l_{11} \ldots \sqrt{\frac{\omega_{k}}{\omega_{k-1}}} = l_{kk}$ 
 
 \section{Iteracyjne metody rozwiązywania u.r.l.}
 Tw. Metoda iteracyjna $x^{(k+1)}=Bx^k+c$ jest zbieżna globalnie $\Leftrightarrow \rho(A) < 1$\\

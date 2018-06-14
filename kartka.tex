@@ -8,8 +8,7 @@
 \selectlanguage{polish}
 \usepackage{amsfonts} %\mathbb
 \usepackage{sectsty} %\sectionfont
-\usepackage{amsmath} %\underset
-
+\usepackage{amsmath} %\underset matrix 
 
 \sectionfont{\large}
 \subsectionfont{\normalsize}
@@ -17,23 +16,23 @@
 \begin{document}
 \begin{flushleft}
 \section{Uwarunkowanie}
-$\delta+1 = \frac{1}{1-\delta}$ $\delta^{2} \approx 0$\\
+$\delta+1 = \frac{1}{1-\delta} \qquad \delta^{2} \approx 0$\\
 Błąd względny wyniku: $$\left| \frac{f(\widetilde{x}) - f(x)}{f(x)} \right| = \left| \frac{xf'(x)}{x} \right| |\delta|$$
 $$cond(x) = \left| \frac{xf'(x)}{x} \right| $$
-
 Uwarunkowanie zadania numerycznego: $$\frac{||f(\widetilde{d}) - f(d)||}{||f(d)||} \leq cond(d) \frac{||d - \widetilde{d}||}{||d||}$$
+
 \section{Normy}
-\subsection{wektorowe}
+\subsection{Wektorowe}
 $$ ||x||_{2} = \sqrt{\sum_{i=1}^{n} x_{i}^{2}} \ \ \ ||x||_{1} = \sum_{i=1}^{n} |x_{i}|^{2} $$
 $$ ||x||_{\infty} = \max_{i \in \{1,...,n\}} |x_{k}| \ \ \  ||x||_{p} = \left(\sum_{i=1}^{n}|x_{i}|^{p}\right)^{\frac{1}{p}} $$
-\subsection{macierzowe}
+\subsection{Macierzowe}
 $$ ||A||_{1} = \max_{j=1,...,n} \sum_{i=1}^{n}|a_{ij}| \ \ \ ||A||_{\infty} = \max_{i=1,...,n} \sum_{j=1}^{n}|a_{ij}| $$
 $$\mathbb{}$$
 $$ ||A||_{2} = \sup_{x \neq 0, \ x \in \mathbb{C}^{n}} \frac{||Ax||_{2}}{||x||_{2}} = \sqrt{\rho\left(A^{*}A\right)} \ \ \ A^{*} = \overline{A}^{T}$$
 $$ ||A||_{F} = \sqrt{\sum_{i = 0}^{n} \sum_{j = 0}^{n} |a_{ij}|^{2}} $$
 zgodność norm jeśli: $||Ax|| \leq ||A|| \cdot ||x||$\\
 dla normy Frobeniusa: $||Ax||_{F} \leq ||A||_{F} ||x||_{2}$\\
-dla dowolej zachodzi: $||AB|| \leq ||A|| \cdot ||B||$
+dla dowolnej zachodzi: $||AB|| \leq ||A|| \cdot ||B||$
 
 \section{Arytmetyka zmianno przecinkowa (fl)}
 Zbiór $M( 2,t,k )$ nie jest zamknięty ze względu na działania arytmetyczne. 
@@ -53,9 +52,10 @@ gdzie: $$l_i(x) = \prod_{{j = 0},\ {j \neq i}}^{n} \frac{x - x_{j}}{x_{i}-x_{j}}
 \subsection{Newton}
 $$c_{0} + c_{1}(x-x_{0}) + c_{2}(x-x_{0})(x-x_{1}) + \ldots + c_{n}(x-x_{0})\ldots (x-x_{n-1})$$
 gdzie: $$c_{k} = f_{0,1,2,\ldots,k}$$ oraz $$f_{i,i+1,\ldots,k+i} \stackrel{def}{=} \frac{f_{i+1,\ldots,k} + f_{i,\ldots,(i+k-1)}}{x_{i+k}-x_{i}}$$
-Hermit identycznie tylko że w tabeli węzły się powtarzają i w miejscu różnic dzielonych których nie można otrzymać wpisujemy $\frac{f^{(k)}(x_i)}{k!}$ a w wielomianie interpolacyjnym składniki postaci $(x-x_i)$ będą posiadały odpowiednią potęgę
+Hermite identycznie tylko że w tabeli węzły się powtarzają i w miejscu różnic dzielonych których nie można otrzymać wpisujemy $\frac{f^{(k)}(x_i)}{k!}$ a w wielomianie interpolacyjnym składniki postaci $(x-x_i)$ będą posiadały odpowiednią potęgę
+
 \section{Całkowanie numeryczne}
-Kwadratura jest rzędy r jeśli jest dokładna dla wszystkich wielomianów stopnie r-1 oraz istnieje wielomian stopnia r dla której nie jest dokładna\\
+Kwadratura jest rzędy $r$ jeśli jest dokładna dla wszystkich wielomianów stopnie $r-1$ oraz istnieje wielomian stopnia r dla której nie jest dokładna\\
 \subsection{Trapezy}
 $$S(f) = \sum_{k=1}^{N} \frac{x_k-x_{k-1}}{2}{(f(x_k)+f(x_{k-1}})) =$$ $$=\frac{H}{2} \left(f(a)+f(b)+2\sum_{k=1}^{N-1}f(a+kH)\right)$$
 $$|E(f)| = \left| \sum_{k=1}^{N}\frac{H^3f''(\xi_k)}{12} \right| \leq \frac{H^2(b-a)}{12}\underset{\xi \in [a,b]}{\sup}|f''(\xi)|$$
@@ -65,11 +65,43 @@ $$|E(f)| \leq \frac{NH^3}{24}\underset{\xi \in [a,b]}{\sup}|f''(\xi)| = \frac{H^
 \subsection{Simpson}
 $$S(f) = \sum_{k=1}^N \frac{H}{6} \left(f(x_{k-1})+4f\left(x_{k-1}+\frac{H}{2}\right)+f(x_k)\right)$$
 $$|E(f)|= \left| \sum_{k=1}^N \frac{H^5f^{(4)}(\xi_k)}{90\cdot2^5}\right| \leq \frac{H^4(b-a)}{2^4}\underset{\xi \in [a,b]}{\sup}|f^{(4)}(\xi)| $$
+
 \section{Rozwiązywanie układów r. liniowych}
+\subsection{Metoda Eliminacji Gaussa GE}
+Tw.1 Jeśli $A$ jest macierzą dodatnio określoną, to metoda GE zastosowana do $Ax=b$ jest wykonalna\\
+Tw.2 Jeśli A jest silnie diagonalnie dominująca, to metoda GE zastosowana do układu $Ax=b$ jest wykonalna
+\subsection{GEPP}
+W $k$-tym kroku wybieramy wierszowo (analog. kolumnowo) $\underset{i \in \{k,...,n\}}{\max}|a_{ik}|$ i zamieniamy $k$-ty wiersz z wierszem z maksymalnym el. w macierzy $[A^{(k-1)}|b^{(k-1)}]$
+\subsection{GECP}
+w $k$-tym kroku znajdujemy $p,q$ tż. $|a_{pq}| = \underset{i,j \in \{1,...,n\}}{\max}|a_{ij}|$ i zamieniamy $p$ wiersz z $k$ oraz $q$ kolumnę z $k$ przy zamianie kolumn następuje zamiana zmiennych w x
+\subsection{Rozkład LU} %nie wiem czy warto coś pisać
+\subsection{Rozkład PA=LU} 
+\subsection{Banachiewicz-Cholesky}
+$$A = LL^T =
+\begin{bmatrix}
+    l_{11} & 0 & 0 & \dots  & 0 \\
+    l_{21} & l_{22} & 0 & \dots  & 0 \\
+    \vdots & \vdots & \vdots & \ddots & \vdots \\
+    l_{n1} & l_{n2} & l_{n3} & \dots  & l_{nn}
+\end{bmatrix}
+\begin{bmatrix}
+    l_{11} & l_{21} & l_{31} & \dots  & l_{n1} \\
+    0 & l_{22} & l_{32} & \dots & l_{n2} \\
+    \vdots & \vdots & \vdots & \ddots & \vdots \\
+    0 & 0 & 0 & \dots  & l_{nn} 
+\end{bmatrix}
+$$
+Fakt: $\sqrt{\omega_1} = l_{11}$ ... $\sqrt{\frac{\omega_{k}}{\omega_{k-1}}} = l_{kk}$ 
+
+\section{Iteracyjne metody rozwiązywania u.r.l.}
+Tw. Metoda iteracyjna $x^{(k+1)}=Bx^k+c$ jest zbieżna globalnie $\Leftrightarrow \rho(A) < 1$\\
+Tw. Jeśli $||B|| < 1$ gdzie $||\cdot||$ jest normą zgodną z pewną normą wektorową to metoda $x^{(k+1)}=Bx^k+c$ jest zbieżna globalnie\\
 
 
 \end{flushleft}
 \end{document}
+
+%tabelka do harmitta ale za dużo miejsca więc porzucona
 \begin{center}
 \begin{tabular}{|l|l|c|l|}
 \hline

@@ -1,0 +1,47 @@
+\documentclass[10pt,twocolumn]{article}
+%\usepackage{showframe} %rysuje linie gdzie margines
+\usepackage[a4paper,includeheadfoot,margin=1.5cm, top=1cm,bottom=1.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\selectlanguage{polish}
+\usepackage{amsfonts} %\mathbb
+\usepackage{sectsty} %\sectionfont
+
+
+\sectionfont{\large}
+\subsectionfont{\normalsize}
+
+\begin{document}
+\begin{flushleft}
+\section{Uwarunkowanie}
+$\delta+1 = \frac{1}{1-\delta}$ $\delta^{2} = 0$\\
+Błąd względny wyniku: $\left| \frac{f(\widetilde{x}) - f(x)}{f(x)} \right| = \left| \frac{xf'(x)}{x} \right| |\delta|$ 
+
+Uwarunkowanie zadania numerycznego: $\frac{||f(\widetilde{d}) - f(d)||}{||f(d)||} \leq cond(d) \frac{||d - \widetilde{d}||}{||d||}$
+\section{Normy}
+\subsection{wektorowe}
+$$ ||x||_{2} = \sqrt{\sum_{i=1}^{n} x_{i}^{2}} \ \ \ ||x||_{1} = \sum_{i=1}^{n} |x_{i}|^{2} $$
+$$ ||x||_{\infty} = \max_{i \in \{1,...,n\}} |x_{k}| \ \ \  ||x||_{p} = \left(\sum_{i=1}^{n}|x_{i}|^{p}\right)^{\frac{1}{p}} $$
+\subsection{macierzowe}
+$$ ||A||_{1} = \max_{j=1,...,n} \sum_{i=1}^{n}|a_{ij}| \ \ \ ||A||_{\infty} = \max_{i=1,...,n} \sum_{j=1}^{n}|a_{ij}| $$
+$$\mathbb{}$$
+$$ ||A||_{2} = \sup_{x \neq 0, \ x \in \mathbb{C}^{n}} \frac{||Ax||_{2}}{||x||_{2}} = \sqrt{\rho\left(A^{*}A\right)} \ \ \ A^{*} = \overline{A}^{T}$$
+$$ ||A||_{F} = \sqrt{\sum_{i = 0}^{n} \sum_{j = 0}^{n} |a_{ij}|^{2}} $$
+zgodność norm jeśli: $||Ax|| \leq ||A|| \cdot ||x||$\\
+dla normy Frobeniusa: $||Ax||_{F} \leq ||A||_{F} ||x||_{2}$\\
+dla dowolej zachodzi: $||AB|| \leq ||A|| \cdot ||B||$
+
+\section{Arytmetyka zmianno przecinkowa (fl)}
+Zbiór $M( 2,t,k )$ nie jest zamknięty ze względu na działania arytmetyczne. 
+$fl(x \diamond y) = rd(x \diamond y)$ zatem błąd arytmetyki jest taki sam jak błąd arytmetyki reprezentacji wyniku.\\
+Zatem $fl(x \diamond y) = (x \diamond y)(1 + \delta) $\\ jeżeli $x = m_{1}\cdot2^{c_{1}}$ $y = m_{2}\cdot2^{c_{2}}$ oraz $c_{1} -c_{2} > t$ to $fl(x+y) = x$
+
+\section{Nymerycza poprawność}
+Def. Algorytm $A$ dla zadania $\varphi$ nazywamy numerycznie poprawnym jeśłi istnieje stała $k$ niezależna od wskaźnika uwarunkowania i niezależna od arytmetyki tż dla dowolnej danej $d \in D$ istnieje dana $\widetilde{d}$ tż $||d-\widetilde{d}|| \leq K\cdot 2^{-t}||d||$ oraz $fl(A(d)) = \varphi(\widetilde{d})$\\
+Czyli, wynik algorytmu A dla danej d (dokładniej) w arytmetyce $fl$ jest dokładnym wynikiem zadania $\varphi$ dla nieco zaburzonej danej.\\
+Oszacowanie błędu alg. num. poprawnego:\\
+$||fl(A(d)) - \varphi(d)|| \leq cond(d) \frac{K\cdot2^{-t}||d||}{||d||}||\varphi(d)||$
+\end{flushleft}
+\end{document}

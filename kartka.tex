@@ -23,23 +23,23 @@ Uwarunkowanie zadania numerycznego: $$\frac{||f(\widetilde{d}) - f(d)||}{||f(d)|
 
 \section{Normy}
 \subsection{Wektorowe}
-$$ ||x||_{2} = \sqrt{\sum_{i=1}^{n} x_{i}^{2}} \ \ \ ||x||_{1} = \sum_{i=1}^{n} |x_{i}|^{2} $$
-$$ ||x||_{\infty} = \max_{i \in \{1,...,n\}} |x_{k}| \ \ \  ||x||_{p} = \left(\sum_{i=1}^{n}|x_{i}|^{p}\right)^{\frac{1}{p}} $$
+$$ ||x||_{2} = \sqrt{\sum_{i=1}^{n} x_{i}^{2}} \quad ||x||_{1} = \sum_{i=1}^{n} |x_{i}|^{2} $$
+$$ ||x||_{\infty} = \max_{i \in \{1,\ldots,n\}} |x_{k}| \quad ||x||_{p} = \left(\sum_{i=1}^{n}|x_{i}|^{p}\right)^{\frac{1}{p}} $$
 \subsection{Macierzowe}
-$$ ||A||_{1} = \max_{j=1,...,n} \sum_{i=1}^{n}|a_{ij}| \ \ \ ||A||_{\infty} = \max_{i=1,...,n} \sum_{j=1}^{n}|a_{ij}| $$
+$$ ||A||_{1} = \max_{j=1,\ldots,n} \sum_{i=1}^{n}|a_{ij}| \quad ||A||_{\infty} = \max_{i=1,\ldots,n} \sum_{j=1}^{n}|a_{ij}| $$
 $$\mathbb{}$$
-$$ ||A||_{2} = \sup_{x \neq 0, \ x \in \mathbb{C}^{n}} \frac{||Ax||_{2}}{||x||_{2}} = \sqrt{\rho\left(A^{*}A\right)} \ \ \ A^{*} = \overline{A}^{T}$$
+$$ ||A||_{2} = \sup_{x \neq 0, \ x \in \mathbb{C}^{n}} \frac{||Ax||_{2}}{||x||_{2}} = \sqrt{\rho\left(A^{*}A\right)} \quad A^{*} = \overline{A}^{T}$$
 $$ ||A||_{F} = \sqrt{\sum_{i = 0}^{n} \sum_{j = 0}^{n} |a_{ij}|^{2}} $$
 zgodność norm jeśli: $||Ax|| \leq ||A|| \cdot ||x||$\\
 dla normy Frobeniusa: $||Ax||_{F} \leq ||A||_{F} ||x||_{2}$\\
 dla dowolnej zachodzi: $||AB|| \leq ||A|| \cdot ||B||$
 
-\section{Arytmetyka zmianno przecinkowa (fl)}
+\section{Arytmetyka zmienno przecinkowa (fl)}
 Zbiór $M( 2,t,k )$ nie jest zamknięty ze względu na działania arytmetyczne. 
 $fl(x \diamond y) = rd(x \diamond y)$ zatem błąd arytmetyki jest taki sam jak błąd arytmetyki reprezentacji wyniku.\\
 Zatem $fl(x \diamond y) = (x \diamond y)(1 + \delta) $\\ jeżeli $x = m_{1}\cdot2^{c_{1}}$ $y = m_{2}\cdot2^{c_{2}}$ oraz $c_{1} -c_{2} > t$ to $fl(x+y) = x$
 
-\section{Nymerycza poprawność}
+\section{Numeryczna poprawność}
 Def. Algorytm $A$ dla zadania $\varphi$ nazywamy numerycznie poprawnym jeśłi istnieje stała $k$ niezależna od wskaźnika uwarunkowania i niezależna od arytmetyki tż dla dowolnej danej $d \in D$ istnieje dana $\widetilde{d}$ tż $||d-\widetilde{d}|| \leq K\cdot 2^{-t}||d||$ oraz $fl(A(d)) = \varphi(\widetilde{d})$\\
 Czyli, wynik algorytmu A dla danej d (dokładniej) w arytmetyce $fl$ jest dokładnym wynikiem zadania $\varphi$ dla nieco zaburzonej danej.\\
 Oszacowanie błędu alg. num. poprawnego:\\
@@ -91,12 +91,15 @@ $$A = LL^T =
     0 & 0 & 0 & \dots  & l_{nn} 
 \end{bmatrix}
 $$
-Fakt: $\sqrt{\omega_1} = l_{11} \ldots \sqrt{\frac{\omega_{k}}{\omega_{k-1}}} = l_{kk}$ 
+Fakt: $\sqrt{\omega_1} = l_{11} \ldots \sqrt{\frac{\omega_{k}}{\omega_{k-1}}} = l_{kk}$  $\omega$ $det$-minorów wiodących
 
 \section{Iteracyjne metody rozwiązywania u.r.l.}
 Tw. Metoda iteracyjna $x^{(k+1)}=Bx^k+c$ jest zbieżna globalnie $\Leftrightarrow \rho(A) < 1$\\
 Tw. Jeśli $||B|| < 1$ gdzie $||\cdot||$ jest normą zgodną z pewną normą wektorową to metoda $x^{(k+1)}=Bx^k+c$ jest zbieżna globalnie\\
-
+Tw. Greszgorin niech $A \in \mathbb{C}^{n \times n}$. Dla każdej wartości własnej $\lambda \in \sigma(A)$ istnieje $i \in \{1,\ldots,n\}$ taki, że $$\lambda \in K_i = \{z \in \mathbb{C}:|z-a_{ii}| \leq \sum_{j=1,j \neq i}^{n} |a_{ii}|$$
+gdzie $K_i$ to $i$-te koło Greszgorina. Ponadto\\
+\centerline{$\sigma(A) \subset \bigcup_{i=1}^nK_i = G(A)$}
+gdzie $G(A)$ nazywany jest zbiorem Greszgorina.
 
 \end{flushleft}
 \end{document}

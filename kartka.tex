@@ -9,7 +9,7 @@
 \usepackage{amsfonts} %\mathbb
 \usepackage{sectsty} %\sectionfont
 \usepackage{amsmath} %\underset matrix 
-
+\usepackage{algorithmic} % pseudokod
 \sectionfont{\large}
 \subsectionfont{\normalsize}
 
@@ -47,8 +47,8 @@ $||fl(A(d)) - \varphi(d)|| \leq cond(d) \frac{K\cdot2^{-t}||d||}{||d||}||\varphi
 
 \section{Interpolacja}
 \subsection{Lagrange}
-$$p_{n}(x) = \sum_{i = 0}^{n}f_{i}l_{i}(x)$$
-gdzie: $$l_i(x) = \prod_{{j = 0},\ {j \neq i}}^{n} \frac{x - x_{j}}{x_{i}-x_{j}}$$
+$$p_{n}(x) = \sum_{i=0}^{n}f_{i}l_{i}(x)$$
+gdzie: $$l_i(x) = \prod_{{j = 0},\ {j \neq i}}^{n} \frac{x - x_{j}}{x_{i} - x_{j}}$$
 \subsection{Newton}
 $$c_{0} + c_{1}(x-x_{0}) + c_{2}(x-x_{0})(x-x_{1}) + \ldots + c_{n}(x-x_{0})\ldots (x-x_{n-1})$$
 gdzie: $$c_{k} = f_{0,1,2,\ldots,k}$$ oraz $$f_{i,i+1,\ldots,k+i} \stackrel{def}{=} \frac{f_{i+1,\ldots,k} + f_{i,\ldots,(i+k-1)}}{x_{i+k}-x_{i}}$$
@@ -57,13 +57,13 @@ Hermite identycznie tylko że w tabeli węzły się powtarzają i w miejscu ró�
 \section{Całkowanie numeryczne}
 Kwadratura jest rzędy $r$ jeśli jest dokładna dla wszystkich wielomianów stopnie $r-1$ oraz istnieje wielomian stopnia r dla której nie jest dokładna\\
 \subsection{Trapezy}
-$$S(f) = \sum_{k=1}^{N} \frac{x_k-x_{k-1}}{2}{(f(x_k)+f(x_{k-1}})) =$$ $$=\frac{H}{2} \left(f(a)+f(b)+2\sum_{k=1}^{N-1}f(a+kH)\right)$$
+$$S(f) = \sum_{k=1}^{N} \frac{x_k - x_{k-1}}{2}{(f(x_k) + f(x_{k-1}})) =$$ $$=\frac{H}{2} \left(f(a)+f(b)+2\sum_{k=1}^{N-1}f(a + kH)\right)$$
 $$|E(f)| = \left| \sum_{k=1}^{N}\frac{H^3f^{\prime\prime}(\xi_k)}{12} \right| \leq \frac{H^2(b-a)}{12}\underset{\xi \in [a,b]}{\sup}|f^{\prime\prime} (xi)|$$
 \subsection{Prostokąty}
-$$S(f) = \sum_{k=1}^{N}(x_k-x_{k-1})f\left(\frac{x_k+x_{k-1}}{2}\right) = H\sum_{k=0}^{n}f\left(\frac{x_k + x_{k-1}}{2}\right)$$
+$$S(f) = \sum_{k=1}^{N}(x_k - x_{k-1})f\left(\frac{x_k + x_{k-1}}{2}\right) = H\sum_{k=0}^{n}f\left(\frac{x_k + x_{k-1}}{2}\right)$$
 $$|E(f)| \leq \frac{NH^3}{24}\underset{\xi \in [a,b]}{\sup}|f^{\prime\prime}(\xi)| = \frac{H^2}{24}(b-a)\underset{\xi \in [a,b]}{\sup}|f^{\prime\prime}(\xi)|$$
 \subsection{Simpson}
-$$S(f) = \sum_{k=1}^N \frac{H}{6} \left(f(x_{k-1})+4f\left(x_{k-1}+\frac{H}{2}\right)+f(x_k)\right)$$
+$$S(f) = \sum_{k=1}^N \frac{H}{6} \left(f(x_{k-1})+4f\left(x_{k-1} + \frac{H}{2}\right) + f(x_k)\right)$$
 $$|E(f)|= \left| \sum_{k=1}^N \frac{H^5f^{(4)}(\xi_k)}{90\cdot2^5}\right| \leq \frac{H^4(b-a)}{2^4}\underset{\xi \in [a,b]}{\sup}|f^{(4)}(\xi)| $$
 
 \section{Rozwiązywanie układów r. liniowych}
@@ -87,9 +87,10 @@ $$A = LL^T \quad L=
 Fakt: $\sqrt{\omega_1} = l_{11} \ldots \sqrt{\frac{\omega_{k}}{\omega_{k-1}}} = l_{kk}$  $\omega$ $det$-minorów wiodących
 
 \section{Iteracyjne metody rozwiązywania u.r.l.}
-Tw. Metoda iteracyjna $x^{(k+1)}=Bx^k+c$ jest zbieżna globalnie $\Leftrightarrow \rho(A) < 1$\\
+Tw. Metoda iteracyjna $x^{(k+1)} = Bx^k + c$ jest zbieżna globalnie $\Leftrightarrow \rho(A) < 1$\\
 Tw. Jeśli $||B|| < 1$ gdzie $||\cdot||$ jest normą zgodną z pewną normą wektorową to metoda $x^{(k+1)}=Bx^k+c$ jest zbieżna globalnie\\
-Tw. Greszgorin niech $A \in \mathbb{C}^{n \times n}$. Dla każdej wartości własnej $\lambda \in \sigma(A)$ istnieje $i \in \{1,\ldots,n\}$ taki, że $$\lambda \in K_i = \{z \in \mathbb{C}:|z-a_{ii}| \leq \sum_{j=1,j \neq i}^{n} |a_{ii}|$$
+Tw. Greszgorin niech $A \in \mathbb{C}^{n \times n}$. Dla każdej wartości własnej $\lambda \in \sigma(A)$ istnieje $i \in \{1,\ldots,n\}$ taki, że
+$$\lambda \in K_i = \{z \in \mathbb{C}:|z-a_{ii}| \leq \sum_{j=1,j \neq i}^{n} |a_{ii}|$$
 gdzie $K_i$ to $i$-te koło Greszgorina. Ponadto\\
 \centerline{$\sigma(A) \subset \bigcup_{i=1}^nK_i = G(A)$}
 gdzie $G(A)$ nazywany jest zbiorem Greszgorina.\\
@@ -98,9 +99,17 @@ Warunki stopu:
 \item $||x^{(k+1)} - x^{(k)}|| \leq d||$ błąd bezwzględny
 \item $||x^{(k+1)} - x^{(k)}|| \leq d||x^{(k)}$ błąd względny
 \item $||x^{(k+1)} - x^{(k)}|| \leq d_1||x^{(k)} + d_2$ warunek Gilla
-\item $||Ax^{(k)} -b|| \leq d$ błąd residualny.
+\item $||Ax^{(k)} -b || \leq d$ błąd residualny.
 \end{enumerate}
-
+\subsection{Metoda Jakobiego}
+$x^{(k+1)} = -D^{-1}(L+U)x^{(k)}+D^{-1}b$
+\begin{algorithmic}
+\FOR{$p=1,\ldots,n$}
+	\STATE{$x_p^{(k+1)} = \left( b_p - \sum_{j=1}^{p-1}a_{pj}x_j^{(k)} - \sum_{j=p+1}^{n}a_{pj}x_j^{(k)}\right)/ a_{pp}$}
+\ENDFOR
+\end{algorithmic}
+\subsection{Gauss-Seidel}
+\subsection{•}
 \end{flushleft}
 \end{document}
 

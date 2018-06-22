@@ -1,6 +1,9 @@
-\documentclass[10pt,twocolumn]{article}
+%Bartosz Chrostowski
+%2018 sesja letnia
+
+\documentclass[twocolumn]{article}
 %\usepackage{showframe} %rysuje linie gdzie margines
-\usepackage[a4paper,margin=1.15cm, top=1cm,bottom=1.25cm]{geometry}
+\usepackage[a4paper,margin=1.15cm, top=1cm,bottom=1cm]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[polish]{babel}
 \usepackage[utf8]{inputenc}
@@ -12,9 +15,13 @@
 \usepackage{algorithmic} % pseudokod
 \sectionfont{\large}
 \subsectionfont{\normalsize}
+\usepackage{scrextend} % ? stackexchange: how to change latex less 10pt
+\changefontsizes[8pt]{8pt} %? stackexchange: how to change latex less 10pt
+\usepackage{lipsum} %? stackexchange: how to change latex less 10pt
 
 \begin{document}
 \begin{flushleft}
+\thispagestyle{empty} %XD
 \section{Uwarunkowanie}
 $\delta+1 = \frac{1}{1-\delta} \qquad \delta^{2} \approx 0$\\
 Błąd względny wyniku: $$\left| \frac{f(\widetilde{x}) - f(x)}{f(x)} \right| = \left| \frac{xf'(x)}{x} \right| |\delta|$$
@@ -23,13 +30,12 @@ Uwarunkowanie zadania numerycznego: $$\frac{||f(\widetilde{d}) - f(d)||}{||f(d)|
 
 \section{Normy}
 \subsection{Wektorowe}
-$$ ||x||_{2} = \sqrt{\sum_{i=1}^{n} x_{i}^{2}} \quad ||x||_{1} = \sum_{i=1}^{n} |x_{i}| $$
-$$ ||x||_{\infty} = \max_{i \in \{1,\ldots,n\}} |x_{k}| \quad ||x||_{p} = \left(\sum_{i=1}^{n}|x_{i}|^{p}\right)^{\frac{1}{p}} $$
+$ ||x||_{2} = \sqrt{\sum_{i=1}^{n} x_{i}^{2}} \quad ||x||_{1} = \sum_{i=1}^{n} |x_{i}| $\\
+$ ||x||_{\infty} = \max_{i \in \{1,\ldots,n\}} |x_{k}| \quad ||x||_{p} = \left(\sum_{i=1}^{n}|x_{i}|^{p}\right)^{\frac{1}{p}} $\\
 \subsection{Macierzowe}
-$$ ||A||_{1} = \max_{j=1,\ldots,n} \sum_{i=1}^{n}|a_{ij}| \quad ||A||_{\infty} = \max_{i=1,\ldots,n} \sum_{j=1}^{n}|a_{ij}| $$
-$$\mathbb{}$$
-$$ ||A||_{2} = \sup_{x \neq 0, \ x \in \mathbb{C}^{n}} \frac{||Ax||_{2}}{||x||_{2}} = \sqrt{\rho\left(A^{*}A\right)} \quad A^{*} = \overline{A}^{T}$$
-$$ ||A||_{F} = \sqrt{\sum_{i = 0}^{n} \sum_{j = 0}^{n} |a_{ij}|^{2}} $$
+$ ||A||_{1} = \max_{j=1,\ldots,n} \sum_{i=1}^{n}|a_{ij}| \quad ||A||_{\infty} = \max_{i=1,\ldots,n} \sum_{j=1}^{n}|a_{ij}| $\\
+$ ||A||_{2} = \sup_{x \neq 0, \ x \in \mathbb{C}^{n}} \frac{||Ax||_{2}}{||x||_{2}} = \sqrt{\rho\left(A^{*}A\right)} \quad A^{*} = \overline{A}^{T}$\\
+$ ||A||_{F} = \sqrt{\sum_{i = 0}^{n} \sum_{j = 0}^{n} |a_{ij}|^{2}} $\\
 zgodność norm jeśli: $||Ax|| \leq ||A|| \cdot ||x||$\\
 dla normy Frobeniusa: $||Ax||_{F} \leq ||A||_{F} ||x||_{2}$\\
 dla dowolnej zachodzi: $||AB|| \leq ||A|| \cdot ||B||$
@@ -77,6 +83,7 @@ w $k$-tym kroku znajdujemy $p,q$ tż. $|a_{pq}| = \underset{i,j \in \{1,\ldots,n
 \subsection{Rozkład LU} %nie wiem czy warto coś pisać
 \subsection{Rozkład PA=LU} 
 \subsection{Banachiewicz-Cholesky}
+Jeśli $A \in \mathbb{R}^{n\times n}$ jest symetryczna i dodatnio określona, to istnieje dokładnie jedna macierz $L$ (dolnotrójkątna) z dodatnimi elementami na głównej przekątnej tż $A=LL^T$
 $$A = LL^T \quad L=
 \begin{bmatrix}
     l_{11} & 0 & 0 & \dots  & 0 \\
@@ -96,12 +103,13 @@ gdzie $K_i$ to $i$-te koło Greszgorina. Ponadto\\
 gdzie $G(A)$ nazywany jest zbiorem Greszgorina.\\
 Warunki stopu:
 \begin{enumerate}
-\item $||x^{(k+1)} - x^{(k)}|| \leq d||$ błąd bezwzględny
-\item $||x^{(k+1)} - x^{(k)}|| \leq d||x^{(k)}$ błąd względny
-\item $||x^{(k+1)} - x^{(k)}|| \leq d_1||x^{(k)} + d_2$ warunek Gilla
+\item $||x^{(k+1)} - x^{(k)}|| \leq d$ błąd bezwzględny
+\item $||x^{(k+1)} - x^{(k)}|| \leq d||x^{(k)||}$ błąd względny
+\item $||x^{(k+1)} - x^{(k)}|| \leq d_1||x^{(k)}|| + d_2$ warunek Gilla
 \item $||Ax^{(k)} -b || \leq d$ błąd residualny.
 \end{enumerate}
-\subsection{Metoda Jakobiego}
+\subsection{Metoda Jcobiego}
+Jeśli macierz $A$ jest silnie diagonalnie dominująca, to metoda Jacobiego jest zbieżna
 $x^{(k+1)} = -D^{-1}(L+U)x^{(k)}+D^{-1}b$
 \begin{algorithmic}
 \FOR{$p=1,\ldots,n$}
@@ -109,7 +117,49 @@ $x^{(k+1)} = -D^{-1}(L+U)x^{(k)}+D^{-1}b$
 \ENDFOR
 \end{algorithmic}
 \subsection{Gauss-Seidel}
-\subsection{•}
+Jeśli $A=A^T$ oraz $A$ jest dodatnio określona, to metoda Gaussa-Seidla jest zbieżna.
+\subsection{Metoda SOR}
+$B_{SOR} = (D + \omega L)^{-1}((1- \omega)D - \omega U)$\\
+$c_{SOR}(D+\omega L)^{-1}b \omega$\\
+$$x_i^{(k+1)} = (1 - \omega)x_i^{(k)} + \frac{\omega}{a_{ii}}\left( b_i- \sum_{j<i}a_{ij}x_j^{k+1} - \sum_{j>i}a_{ij}x_j^{(k)} \right)$$
+Tw. Kahana$^{(?)}$ Dla metody SOR $\rho(B_{SOR)>|1-\omega|}$\\
+Tw. Jeśli $A$ jest symetryczna i dodatnio określona, to metoda SOR jest zbieżna dla każdego $\omega \in (0,2)$
+\subsection{Warunek zbieżności}
+\thispagestyle{empty} % XDD
+$x = Bx + c$\\
+$x - x^{(k+1)} = Bx + c - x^{(k+1)} = Bx+c -Bx^{(k)}-c$\\
+$x-x^{(k+1)} = B(x-x^{(k)}) = \ldots = B^{k+1}(x-x^{(0)}$\\
+$\underset{k \to \inf}{\lim} = 0$ wtw $\underset{k \to \inf}{\lim} B^{k+1} = 0$
+\section{Wyznaczanie m. zerowych f. 1 zmiennej}
+\subsection{Metoda Newtona}
+$x_{k+1}=x{k}-\frac{f(x_k)}{f^{\prime}(x_k0}$\\
+Jeżeli 1) $f$ jest klasy $C^2([a,b])$ 2) $f(a)f(b)<0$ 3) $f^{\prime}$ i $f^{\prime \prime}$ nie zmieniają znaku na $[a,b]$ 4) $x_0$ jest takie, że $f(x_0)f^{\prime \prime} > 0$ to metoda newtona jest zbieżna\\
+\subsection{Metoda siecznych}
+$x_{k+1} = x_k - f(x_0)\frac{x_k-k_{k-1}}{f(x_k)-f(k_{k-1})}$\\
+Warunki zb. te same tylko oba $x_0$ i $x_1$ muszą spełniać 4)\\
+\subsection{Metoda Halleg'a}
+$$x_{k+1}=x_k-\frac{f(k_{k})}{f^{\prime}(k_k)+\frac{f(x_k)}{2f^\prime(k_{k})}f^{\prime \prime}(k_{k})}$$
+\subsection{Metoda Parabol}
+\subsection{Metoda Bisekcji}
+$f$ ciągła $[a,b]$ tż $f(a)f(b) < 0$ 
+\begin{algorithmic}
+\FOR{$p=1,\ldots, $}
+	\STATE{$t_k = \frac{a_k+b_k}{2}$}
+	\IF{$f(a_k)f(t_k)<0$}
+		\STATE{$a_{k+1} = a_k$ $b_{k+1}=t_k$}
+	\ELSIF{$f(a_k)f(t_k)>0$}
+		\STATE{$a_{k+1} = t_k$ $b_{k+1}=b_k$}
+	\ELSE
+		\STATE{wynik $t_k$}
+	\ENDIF
+\ENDFOR
+\end{algorithmic}
+\subsection{Zbieżność}
+Przyjmijmy, że $e_k=x_k - \alpha$ jest błędęm w $k$-tym kroku Jeśli istnieją liczby $p$ i $c$ tż $\underset{k \to \inf}{\lim}\frac{|e_{k+1}|}{|e_k|^p}=c$ to $p$ nazywamy wykładnikiem zbieżności metody iteracyjnej\\
+$|e_{k+1}| \leq c|e_k|^p$ im p większe tym metoda szybsza\\
+Newtona $p=2$, Stycznych $p=\frac{1+\sqrt{5}}{2}$, Halleg'a $p=3$, Parabol $p=3$, Bisekcji $p=1$\\
+Dla Newtona (dd z Taylora w ot. $x_0$) dla miejsc pojedynczych
+$$|e_{k+1}|\leq \frac{1}{2}\left| \frac{f^{\prime \prime}(\xi)}{f^{\prime}(x_k)}\right| |e_k|^2$$
 \end{flushleft}
 \end{document}
 

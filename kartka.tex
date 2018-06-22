@@ -70,7 +70,7 @@ $$S(f) = \sum_{k=1}^{N}(x_k - x_{k-1})f\left(\frac{x_k + x_{k-1}}{2}\right) = H\
 $$|E(f)| \leq \frac{NH^3}{24}\underset{\xi \in [a,b]}{\sup}|f^{\prime\prime}(\xi)| = \frac{H^2}{24}(b-a)\underset{\xi \in [a,b]}{\sup}|f^{\prime\prime}(\xi)|$$
 \subsection{Simpson}
 $$S(f) = \sum_{k=1}^N \frac{H}{6} \left(f(x_{k-1})+4f\left(x_{k-1} + \frac{H}{2}\right) + f(x_k)\right)$$
-$$|E(f)|= \left| \sum_{k=1}^N \frac{H^5f^{(4)}(\xi_k)}{90\cdot2^5}\right| \leq \frac{H^4(b-a)}{2^4}\underset{\xi \in [a,b]}{\sup}|f^{(4)}(\xi)| $$
+$$|E(f)|= \left| \sum_{k=1}^N \frac{H^5f^{(4)}(\xi_k)}{90\cdot2^5}\right| \leq \frac{H^4(b-a)}{180\cdot2^4}\underset{\xi \in [a,b]}{\sup}|f^{(4)}(\xi)| $$
 
 \section{Rozwiązywanie układów r. liniowych}
 \subsection{Metoda Eliminacji Gaussa GE}

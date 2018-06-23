@@ -104,7 +104,7 @@ Warunki stopu: \\ %enumerate za dużo miejsca nie chce mi się z nim bawić żeb
 4) $||Ax^{(k)} -b || \leq d$ błąd residualny. \\
 
 \subsection{Metoda Jacobiego}
-Jeśli macierz $A$ jest silnie diagonalnie dominująca, to metoda Jacobiego jest zbieżna
+Jeśli macierz $A$ jest silnie diagonalnie dominująca $\left(\sum_{j=1,i\neq j}^n |a_{ij}| \leq |a_{ii}|\right)$, to metoda Jacobiego jest zbieżna
 $x^{(k+1)} = -D^{-1}(L+U)x^{(k)}+D^{-1}b$
 \begin{algorithmic}
 \FOR{$p=1,\ldots,n$}
@@ -128,8 +128,8 @@ $x-x^{(k+1)} = B(x-x^{(k)}) = \ldots = B^{k+1}(x-x^{(0)})$\\
 $\underset{k \to \inf}{\lim} e_k = 0 \Leftrightarrow \underset{k \to \inf}{\lim} B^{k+1} = 0$
 \section{Wyznaczanie m. zerowych f. 1 zmiennej}
 \subsection{Metoda Newtona}
-$x_{k+1}=x{k}-\frac{f(x_k)}{f^{\prime}(x_k0}$\\
-Jeżeli 1) $f$ jest klasy $C^2([a,b])$ 2) $f(a)f(b)<0$ 3) $f^{\prime}$ i $f^{\prime \prime}$ nie zmieniają znaku na $[a,b]$ 4) $x_0$ jest takie, że $f(x_0)f^{\prime \prime} > 0$ to metoda newtona jest zbieżna\\
+$x_{k+1}=x{k}-\frac{f(x_k)}{f^{\prime}(x_k)}$\\
+Jeżeli \textbf{1)} $f$ jest klasy $C^2([a,b])$ \textbf{2)} $f(a)f(b)<0$  \textbf{3)} $f^{\prime}$ i $f^{\prime \prime}$ nie zmieniają znaku na $[a,b]$ \textbf{4)} $x_0$ jest takie, że $f(x_0)f^{\prime \prime} > 0$ to metoda newtona jest zbieżna\\
 \subsection{Metoda siecznych}
 $x_{k+1} = x_k - f(x_0)\frac{x_k-k_{k-1}}{f(x_k)-f(k_{k-1})}$\\
 Warunki zb. te same tylko oba $x_0$ i $x_1$ muszą spełniać 4)\\
@@ -152,14 +152,13 @@ $f$ ciągła $[a,b]$ tż $f(a)f(b) < 0$
 \ENDFOR
 \end{algorithmic}
 \subsection{Zbieżność}
-Przyjmijmy, że $e_k=x_k - \alpha$ jest błędęm w $k$-tym kroku Jeśli istnieją liczby $p$ i $c$ tż $\underset{k \to \inf}{\lim}\frac{|e_{k+1}|}{|e_k|^p}=c$ to $p$ nazywamy wykładnikiem zbieżności metody iteracyjnej\\
+Przyjmijmy, że $e_k=x_k - \alpha$ jest błędem w $k$-tym kroku Jeśli istnieją liczby $p$ i $c$ tż $\underset{k \to \inf}{\lim}\frac{|e_{k+1}|}{|e_k|^p}=c$ to $p$ nazywamy wykładnikiem zbieżności metody iteracyjnej\\
 $|e_{k+1}| \leq c|e_k|^p$ im p większe tym metoda szybsza\\
 Newtona $p=2$, Stycznych $p=\frac{1+\sqrt{5}}{2}$, Halleg'a $p=3$, Parabol $p=3$, Bisekcji $p=1$\\
 Dla Newtona (dd z Taylora w ot. $x_0$) dla miejsc pojedynczych
 $$|e_{k+1}|\leq \frac{1}{2}\left| \frac{f^{\prime \prime}(\xi)}{f^{\prime}(x_k)}\right| |e_k|^2$$
 \section{Rozwiązywanie układów równań nielinowych}
-%TO DO
-
+{\Large \textbf{•TO DO}}
 
 \section{Uwarunkowanie zadania roz. u.r.l}
 \center{$cond(A) = ||A|| \ ||A^{-1}||$}

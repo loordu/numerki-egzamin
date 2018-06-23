@@ -25,8 +25,8 @@
 \thispagestyle{empty} %XD
 \section{Uwarunkowanie}
 $\delta+1 = \frac{1}{1-\delta} \qquad \delta^{2} \approx 0$\\
-Błąd względny wyniku: $$\left| \frac{f(\widetilde{x}) - f(x)}{f(x)} \right| = \left| \frac{xf'(x)}{x} \right| |\delta|$$
-$$cond(x) = \left| \frac{xf'(x)}{x} \right| \qquad \sum_{k=1}^{n} \left| \frac{x_k \frac{\partial f}{\partial x_k}(x_1,\ldots,x_k)}{f(x_1,\ldots,x_k)} \right| \ (f:\mathbb{R}^k \rightarrow \mathbb{R})$$
+Błąd względny wyniku: $$\left| \frac{f(\widetilde{x}) - f(x)}{f(x)} \right| = \left| \frac{xf'(x)}{f(x)} \right| |\delta|$$
+$$cond(x) = \left| \frac{xf'(x)}{f(x)} \right| \qquad \sum_{k=1}^{n} \left| \frac{x_k \frac{\partial f}{\partial x_k}(x_1,\ldots,x_k)}{f(x_1,\ldots,x_k)} \right| \ (f:\mathbb{R}^k \rightarrow \mathbb{R})$$
 Uwarunkowanie zadania numerycznego: $$\frac{||f(\widetilde{d}) - f(d)||}{||f(d)||} \leq cond(d) \frac{||d - \widetilde{d}||}{||d||}$$
 
 \section{Normy}
